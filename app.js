@@ -3,18 +3,20 @@ const app = express()
 
 const port = 8080;
 
-app.get('/', (req, res) => {
-  res.send('Home Page')
-})
+app.use( express.static('public')); //sire en la url raiz(ya que no se especificó) el contenido de la carpeta public y por defecto va al index.html
 
 app.get('/hola-mundo', (req, res) => {
-    res.send('Hola Mundo')
-  })
+  res.send('Hola Mundo')
+})
 
-  app.get('*', (req, res) => {
-    res.send('404 | Pagina no encontrada')
-  })
+app.get('/generic', (req, res) => {
+  res.sendFile(__dirname + '/public/generic.html')
+})
 
-  app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
-  })
+app.get('*', (req, res) => {
+  res.send('404 | Pagina no encontrada')
+})
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
