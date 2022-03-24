@@ -12,7 +12,10 @@ app.get('/hola-mundo', (req, res) => {
 })
 
 app.get('/', (req, res) => {
-  res.render('home')
+  res.render('home', {
+    nombre: 'Maxi',
+    titulo: 'Curso de Node'
+  })
 })
 
 app.get('/generic', (req, res) => {
