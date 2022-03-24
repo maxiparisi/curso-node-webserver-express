@@ -3,10 +3,16 @@ const app = express()
 
 const port = 8080;
 
+app.set('view engine', 'hbs');
+
 app.use( express.static('public')); //sire en la url raiz(ya que no se especificó) el contenido de la carpeta public y por defecto va al index.html
 
 app.get('/hola-mundo', (req, res) => {
   res.send('Hola Mundo')
+})
+
+app.get('/', (req, res) => {
+  res.render('home')
 })
 
 app.get('/generic', (req, res) => {
